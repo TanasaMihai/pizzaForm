@@ -1,0 +1,10 @@
+h1{
+    text-align: center;   
+}
+
+body, form{
+    font-family: 'EB Garamond', serif
+}
+form{
+    text-align: left;
+}

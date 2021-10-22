@@ -3,6 +3,9 @@ function createBill(){
     var items = ["null", "null", "null","null"];
     var quantities = ["null", "null", "null","null"];
     var prices = ["null", "null", "null","null"];
+
+    const mTvq = 0.1;
+    const mTps = 0.05;
                             
                             
                             
@@ -33,7 +36,6 @@ function createBill(){
     prices[index] = document.getElementById("p3").value;
     index++;
     }
-
     var fTot=0;
     strt(1);
     for(var i=0;i<index;i++){
@@ -45,27 +47,32 @@ function createBill(){
     document.write("<td>"+tot+"</td>");
     fTot+=tot;
     document.write("</tr>");
-    }
-    document.write("<tr><td colspan=\"3\"><strong>TOTAL</strong></td><td>"+fTot+"</td><tr>");
-   	
-    }
-    
-    function createtbl(x){		
-    document.write("<td>"+x+"</td>");
-    }
-    
-    function strt(n){
-    if(n==1){
-    document.writeln("<h1 style=\"text-align:center;\">Bill</h1>");
-    document.writeln("<table width=\"90%\" border=\"1\">");
-    document.writeln("<tr><th>ITEMS</th><th>QUANTITY</th><th>PRICE</th><th></th></tr>");
-    }
-        else
-        document.write("</table>");
-    }
-    
-    function createTot(x,y){
-    var tot=parseInt(x)*parseInt(y);
-    document.write("<td>"+tot+"</td>");
-    
 }
+    document.write("<tr><td colspan=\"3\"><strong>SubTOTAL</strong></td><td>"+fTot+"</td><tr>");
+    var  TVQ = fTot * mTvq;
+    document.write("</tr>");
+    document.write("<tr><td colspan=\"3\"><strong>TVQ</strong></td><td>"+TVQ+"</td><tr>");
+    var  TPS = fTot * mTps;
+    document.write("<tr><td colspan=\"3\"><strong>TPS</strong></td><td>"+TPS+"</td><tr>");
+    var Total = fTot+TPS+TVQ;
+    document.write("<tr><td colspan=\"3\"><strong>TOTAL</strong></td><td>"+Total+"</td><tr>");
+}
+    function createtbl(x){		
+        document.write("<td>"+x+"</td>");
+        }
+        
+        function strt(n){
+        if(n==1){
+        document.writeln("<h1 style=\"text-align:center;\">Bill</h1>");
+        document.writeln("<table width=\"90%\" border=\"1\">");
+        document.writeln("<tr><th>ITEMS</th><th>QUANTITY</th><th>PRICE</th><th>Tp/Item</th></tr>");
+        }
+            else
+            document.write("</table>");
+        }
+        
+        function createTot(x,y){
+        var tot=parseInt(x)*parseInt(y);
+        document.write("<td>"+tot+"</td>");
+        
+    }
